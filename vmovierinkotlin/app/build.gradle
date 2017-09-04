@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.kotlin.kunlun.vmovier_in_kotlin"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","API_HOST","\"http://app.vmoiver.com\"")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.vise.xiaoyaoyou:xsnow:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+    compile ('com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'){
+        exclude(group:'com.android.support')
+    }
+
+    compile 'com.liulishuo.filedownloader:library:1.6.3'
+
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.0'
+//    compile 'com.jakewharton:butterknife:8.8.0'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    compile ('fm.jiecao:jiecaovideoplayer:3.6.1'){
+        exclude(group:'com.android.support')
+    }
+
+    compile ('com.jaeger.statusbaruitl:library:1.1.0'){
+        exclude(group:'com.android.support')
+    }
+
+//    compile "com.android.support:multidex:1.0.1"
+
+
+    //upnp
+//    compile 'org.fourthline.cling:cling-core:2.1.0'
+//    compile 'org.fourthline.cling:cling-support:2.1.0'
+//    compile 'org.eclipse.jetty:jetty-server:8.1.18.v20150929'
+//    compile 'org.eclipse.jetty:jetty-servlet:8.1.18.v20150929'
+//    compile 'org.eclipse.jetty:jetty-client:8.1.18.v20150929'
+//    compile 'org.slf4j:slf4j-jdk14:1.7.14'
+    compile project(path: ':opensourceview')
+}
